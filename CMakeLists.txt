@@ -981,6 +981,18 @@ SET(XNNPACK_AARCH64_NEONFMA_MICROKERNEL_SRCS
 SET(XNNPACK_AARCH64_NEONFP16ARITH_MICROKERNEL_SRCS
   src/f16-clamp/gen/neonfp16arith-x16.c
   src/f16-clamp/gen/neonfp16arith-x8.c
+  src/f16-dwconv/gen/up16x25-minmax-neonfp16arith-acc2.c
+  src/f16-dwconv/gen/up16x25-minmax-neonfp16arith.c
+  src/f16-dwconv/gen/up16x8-minmax-neonfp16arith-acc2.c
+  src/f16-dwconv/gen/up16x8-minmax-neonfp16arith.c
+  src/f16-dwconv/gen/up16x9-minmax-neonfp16arith-acc2.c
+  src/f16-dwconv/gen/up16x9-minmax-neonfp16arith.c
+  src/f16-dwconv/gen/up8x25-minmax-neonfp16arith-acc2.c
+  src/f16-dwconv/gen/up8x25-minmax-neonfp16arith.c
+  src/f16-dwconv/gen/up8x8-minmax-neonfp16arith-acc2.c
+  src/f16-dwconv/gen/up8x8-minmax-neonfp16arith.c
+  src/f16-dwconv/gen/up8x9-minmax-neonfp16arith-acc2.c
+  src/f16-dwconv/gen/up8x9-minmax-neonfp16arith.c
   src/f16-hswish/gen/neonfp16arith-x16.c
   src/f16-hswish/gen/neonfp16arith-x8.c
   src/f16-prelu/gen/neonfp16arith-2x16.c
@@ -3188,6 +3200,15 @@ IF(XNNPACK_BUILD_BENCHMARKS)
   TARGET_INCLUDE_DIRECTORIES(f32-dwconv-chw-bench PRIVATE src)
   TARGET_INCLUDE_DIRECTORIES(f32-dwconv-chw-bench PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
   TARGET_LINK_LIBRARIES(f32-dwconv-chw-bench PRIVATE XNNPACK cpuinfo fp16 benchmark bench-utils)
+
+  ADD_EXECUTABLE(f16-dwconv-bench bench/f16-dwconv.cc)
+  SET_TARGET_PROPERTIES(f16-dwconv-bench PROPERTIES
+    CXX_STANDARD 11
+    CXX_STANDARD_REQUIRED YES
+    CXX_EXTENSIONS YES)
+  TARGET_INCLUDE_DIRECTORIES(f16-dwconv-bench PRIVATE src)
+  TARGET_INCLUDE_DIRECTORIES(f16-dwconv-bench PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+  TARGET_LINK_LIBRARIES(f16-dwconv-bench PRIVATE XNNPACK cpuinfo fp16 benchmark bench-utils)
 
   ADD_EXECUTABLE(f32-dwconv-bench bench/f32-dwconv.cc)
   SET_TARGET_PROPERTIES(f32-dwconv-bench PROPERTIES

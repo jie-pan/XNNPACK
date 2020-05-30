@@ -1,0 +1,21 @@
+# Copyright 2020 Google LLC
+#
+# This source code is licensed under the BSD-style license found in the
+# LICENSE file in the root directory of this source tree.
+- name: xnn_f16_dwconv_minmax_ukernel_up8x9__aarch68_neonfp16arith
+  assembly: true
+- name: xnn_f16_dwconv_minmax_ukernel_up8x9__aarch68_neonfp16arith_cortex_a55
+  pipelined: true
+  assembly: true
+- name: xnn_f16_dwconv_minmax_ukernel_up8x25__neonfp16arith
+- name: xnn_f16_dwconv_minmax_ukernel_up8x25__neonfp16arith_acc2
+- name: xnn_f16_dwconv_minmax_ukernel_up16x25__neonfp16arith
+- name: xnn_f16_dwconv_minmax_ukernel_up16x25__neonfp16arith_acc2
+- name: xnn_f16_dwconv_minmax_ukernel_up8x9__neonfp16arith
+- name: xnn_f16_dwconv_minmax_ukernel_up8x9__neonfp16arith_acc2
+- name: xnn_f16_dwconv_minmax_ukernel_up16x9__neonfp16arith
+- name: xnn_f16_dwconv_minmax_ukernel_up16x9__neonfp16arith_acc2
+- name: xnn_f16_dwconv_minmax_ukernel_up8x8__neonfp16arith
+- name: xnn_f16_dwconv_minmax_ukernel_up8x8__neonfp16arith_acc2
+- name: xnn_f16_dwconv_minmax_ukernel_up16x8__neonfp16arith
+- name: xnn_f16_dwconv_minmax_ukernel_up16x8__neonfp16arith_acc2

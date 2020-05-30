@@ -981,6 +981,18 @@ NEONV8_UKERNELS = [
 AARCH64_NEONFP16ARITH_UKERNELS = [
     "src/f16-clamp/gen/neonfp16arith-x16.c",
     "src/f16-clamp/gen/neonfp16arith-x8.c",
+    "src/f16-dwconv/gen/up16x25-minmax-neonfp16arith-acc2.c",
+    "src/f16-dwconv/gen/up16x25-minmax-neonfp16arith.c",
+    "src/f16-dwconv/gen/up16x8-minmax-neonfp16arith-acc2.c",
+    "src/f16-dwconv/gen/up16x8-minmax-neonfp16arith.c",
+    "src/f16-dwconv/gen/up16x9-minmax-neonfp16arith-acc2.c",
+    "src/f16-dwconv/gen/up16x9-minmax-neonfp16arith.c",
+    "src/f16-dwconv/gen/up8x25-minmax-neonfp16arith-acc2.c",
+    "src/f16-dwconv/gen/up8x25-minmax-neonfp16arith.c",
+    "src/f16-dwconv/gen/up8x8-minmax-neonfp16arith-acc2.c",
+    "src/f16-dwconv/gen/up8x8-minmax-neonfp16arith.c",
+    "src/f16-dwconv/gen/up8x9-minmax-neonfp16arith-acc2.c",
+    "src/f16-dwconv/gen/up8x9-minmax-neonfp16arith.c",
     "src/f16-hswish/gen/neonfp16arith-x16.c",
     "src/f16-hswish/gen/neonfp16arith-x8.c",
     "src/f16-prelu/gen/neonfp16arith-2x16.c",
@@ -2843,6 +2855,17 @@ xnnpack_benchmark(
         "src/xnnpack/AlignedAllocator.h",
     ] + WEIGHTS_PACK_HDRS + MICROKERNEL_BENCHMARK_HDRS,
     deps = MICROKERNEL_BENCHMARK_DEPS,
+)
+
+xnnpack_benchmark(
+    name = "f16_dwconv_bench",
+    srcs = [
+        "bench/f16-dwconv.cc",
+        "bench/dwconv.h",
+        "bench/google/dwconv.h",
+        "src/xnnpack/AlignedAllocator.h",
+    ] + MICROKERNEL_BENCHMARK_HDRS,
+    deps = MICROKERNEL_BENCHMARK_DEPS + [":indirection"],
 )
 
 xnnpack_benchmark(
