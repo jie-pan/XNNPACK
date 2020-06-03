@@ -44,3 +44,29 @@ build:ios_arm64e --watchos_cpus=armv7k
 build:ios_fat --config=ios
 build:ios_fat --ios_multi_cpus=armv7,arm64
 build:ios_fat --watchos_cpus=armv7k
+
+# Use our custom-configured c++ toolchain.
+build:wasm --crosstool_top=//toolchain:emscripten
+
+# Use --cpu as a differentiator.
+build:wasm --cpu=wasm
+
+# Use the default C++ toolchain to build the tools used during the build.
+build:wasm --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+
+# These compile flags are active no matter which build mode we are in
+# (dbg vs opt). For flags specific to build mode, see cc_toolchain_config.bzl.
+build:wasm --cxxopt="-std=c++11"
+build:wasm --cxxopt="-fno-rtti"
+build:wasm --cxxopt="-fno-exceptions"
+build:wasm --cxxopt="-fomit-frame-pointer"
+
+#panjie
+#build:wasm --cxxopt="-msimd128"
+#build:wasm --cxxopt="-Rpass-missed=loop-vectorize"
+#build:wasm --cxxopt="-Rpass=loop-vectorize"
+build:wasm --features="wasm_simd"
+
+# Disable sandbox environment because emsdk caches files by writing to
+# home directory.
+build:wasm --spawn_strategy=local
