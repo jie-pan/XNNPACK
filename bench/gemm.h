@@ -37,6 +37,16 @@
 //  BENCHMARK_CAPTURE(gemm_fn, srcnn955, "SRCNN (9-5-5)")->Apply(SRCNN955GemmArguments)->UseRealTime();
 
 
+#define BENCHMARK_GEMM_MOBILENETV2(gemm_fn) \
+  BENCHMARK_CAPTURE(gemm_fn, mobilenet_v2, "MobileNet v2")->Apply(MobileNetV2GemmArguments_single)->UseRealTime();
+static void MobileNetV2GemmArguments_single(benchmark::internal::Benchmark* b) {
+  b->ArgNames({"M", "N", "K"});
+
+  /*********** Initial Stage ************/
+  /*           M        N          K    */
+  b->Args({112 * 112,   32,    3 * 3 * 3});
+}
+
 // ShuffleNet v1 with 1 group.
 static void ShuffleNetV1G1GemmArguments(benchmark::internal::Benchmark* b) {
   b->ArgNames({"M", "N", "K"});
