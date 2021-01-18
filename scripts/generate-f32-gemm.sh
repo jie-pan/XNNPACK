@@ -211,6 +211,14 @@ tools/xngen src/f32-gemm/wasmsimd-loadsplat.c.in -D MR=3 -D NR=8 -D X86=1 -D INC
 tools/xngen src/f32-gemm/wasmsimd-loadsplat.c.in -D MR=4 -D NR=8 -D X86=1 -D INC=0 -D ACTIVATION=MINMAX -o src/f32-gemm/gen/4x8-minmax-wasmsimd-x86-loadsplat.c
 tools/xngen src/f32-gemm/wasmsimd-loadsplat.c.in -D MR=4 -D NR=8 -D X86=1 -D INC=1 -D ACTIVATION=MINMAX -o src/f32-gemm/gen-inc/4x8inc-minmax-wasmsimd-x86-loadsplat.c
 
+#4x4
+tools/xngen src/f32-gemm/wasmsimd-loadsplat.c.in -D MR=4 -D NR=4 -D X86=1 -D INC=0 -D ACTIVATION=MINMAX -o src/f32-gemm/gen/4x4-minmax-wasmsimd-x86-loadsplat.c
+tools/xngen src/f32-gemm/wasmsimd-loadsplat.c.in -D MR=4 -D NR=4 -D X86=1 -D INC=1 -D ACTIVATION=MINMAX -o src/f32-gemm/gen-inc/4x4inc-minmax-wasmsimd-x86-loadsplat.c
+#4x16
+tools/xngen src/f32-gemm/wasmsimd-loadsplat.c.in -D MR=4 -D NR=16 -D X86=1 -D INC=0 -D ACTIVATION=MINMAX -o src/f32-gemm/gen/4x16-minmax-wasmsimd-x86-loadsplat.c
+tools/xngen src/f32-gemm/wasmsimd-loadsplat.c.in -D MR=4 -D NR=16 -D X86=1 -D INC=1 -D ACTIVATION=MINMAX -o src/f32-gemm/gen-inc/4x16inc-minmax-wasmsimd-x86-loadsplat.c
+
+
 tools/xngen src/f32-gemm/wasmsimd-loadsplat.c.in -D MR=5 -D NR=8 -D X86=1 -D INC=0 -D ACTIVATION=MINMAX -o src/f32-gemm/gen/5x8-minmax-wasmsimd-x86-loadsplat.c
 tools/xngen src/f32-gemm/wasmsimd-loadsplat.c.in -D MR=5 -D NR=8 -D X86=1 -D INC=1 -D ACTIVATION=MINMAX -o src/f32-gemm/gen-inc/5x8inc-minmax-wasmsimd-x86-loadsplat.c
 
