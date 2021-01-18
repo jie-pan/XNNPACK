@@ -16,6 +16,7 @@ def xnnpack_emscripten_test_linkopts():
         "-s DEMANGLE_SUPPORT=1",
         "-s EXIT_RUNTIME=1",
         "-s ALLOW_MEMORY_GROWTH=1",
+        "-s USE_PTHREADS=0",
         "--pre-js $(location :preamble.js.lds)",
     ]
 
@@ -27,6 +28,7 @@ def xnnpack_emscripten_benchmark_linkopts():
         "-s EXIT_RUNTIME=1",
         "-s ALLOW_MEMORY_GROWTH=1",
         "-s TOTAL_MEMORY=268435456",  # 256M
+        "-s USE_PTHREADS=0",
         "--pre-js $(location :preamble.js.lds)",
     ]
 
