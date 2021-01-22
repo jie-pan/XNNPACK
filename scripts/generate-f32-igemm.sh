@@ -59,6 +59,7 @@ tools/xngen src/f32-igemm/wasmsimd-splat.c.in -D MR=5 -D NR=8 -D X86=0 -D ACTIVA
 tools/xngen src/f32-igemm/wasmsimd-splat.c.in -D MR=6 -D NR=8 -D X86=0 -D ACTIVATION=MINMAX -o src/f32-igemm/gen/6x8-minmax-wasmsimd-arm-splat.c
 
 tools/xngen src/f32-igemm/wasmsimd-splat.c.in -D MR=1 -D NR=8 -D X86=0 -D ACTIVATION=RELU   -o src/f32-igemm/gen/1x8-relu-wasmsimd-splat.c
+tools/xngen src/f32-igemm/wasmsimd-splat.c.in -D MR=1 -D NR=16 -D X86=0 -D ACTIVATION=RELU   -o src/f32-igemm/gen/1x16-relu-wasmsimd-splat.c
 tools/xngen src/f32-igemm/wasmsimd-splat.c.in -D MR=4 -D NR=8 -D X86=0 -D ACTIVATION=RELU   -o src/f32-igemm/gen/4x8-relu-wasmsimd-splat.c
 tools/xngen src/f32-igemm/wasmsimd-splat.c.in -D MR=4 -D NR=16 -D X86=0 -D ACTIVATION=RELU   -o src/f32-igemm/gen/4x16-relu-wasmsimd-splat.c
 tools/xngen src/f32-igemm/wasmsimd-splat.c.in -D MR=5 -D NR=8 -D X86=0 -D ACTIVATION=RELU   -o src/f32-igemm/gen/5x8-relu-wasmsimd-splat.c

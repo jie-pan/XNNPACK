@@ -1033,6 +1033,8 @@ WASMSIMD_UKERNELS = [
     "src/f32-igemm/gen/1x16-minmax-wasmsimd-x86-splat.c",
     "src/f32-igemm/gen/1xN-minmax-wasmsimd-x86-splat.c",
     "src/f32-igemm/gen/1x8-relu-wasmsimd-splat.c",
+    "src/f32-igemm/gen/1x16-relu-wasmsimd-splat.c",
+    "src/f32-igemm/gen/1xN-relu-wasmsimd-splat.c",
     "src/f32-igemm/gen/1x8-wasmsimd-splat.c",
     "src/f32-igemm/gen/1x8s4-minmax-wasmsimd-arm.c",
     "src/f32-igemm/gen/1x8s4-minmax-wasmsimd-x86.c",
