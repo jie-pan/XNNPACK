@@ -243,6 +243,7 @@ tools/xngen src/f32-gemm/wasmsimd-splat.c.in -D MR=6 -D NR=8 -D X86=0 -D INC=1 -
 
 tools/xngen src/f32-gemm/wasmsimd-splat.c.in -D MR=1 -D NR=8 -D X86=0 -D INC=0 -D ACTIVATION=RELU   -o src/f32-gemm/gen/1x8-relu-wasmsimd-splat.c
 tools/xngen src/f32-gemm/wasmsimd-splat.c.in -D MR=4 -D NR=8 -D X86=0 -D INC=0 -D ACTIVATION=RELU   -o src/f32-gemm/gen/4x8-relu-wasmsimd-splat.c
+tools/xngen src/f32-gemm/wasmsimd-splat.c.in -D MR=4 -D NR=16 -D X86=0 -D INC=0 -D ACTIVATION=RELU   -o src/f32-gemm/gen/4x16-relu-wasmsimd-splat.c
 tools/xngen src/f32-gemm/wasmsimd-splat.c.in -D MR=5 -D NR=8 -D X86=0 -D INC=0 -D ACTIVATION=RELU   -o src/f32-gemm/gen/5x8-relu-wasmsimd-splat.c
 
 tools/xngen src/f32-gemm/wasmsimd-splat.c.in -D MR=1 -D NR=8 -D X86=0 -D INC=0 -D ACTIVATION=LINEAR -o src/f32-gemm/gen/1x8-wasmsimd-splat.c
