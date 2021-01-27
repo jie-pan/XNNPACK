@@ -2207,7 +2207,7 @@ static void init(void) {
       //xnn_params.f32.gemm.linear.igemm1 = xnn_init_hmp_igemm_ukernel((xnn_igemm_ukernel_function) xnn_f32_igemm_ukernel_1x8__wasmsimd_splat);
       xnn_params.f32.gemm.linear.igemm1 = xnn_init_hmp_igemm_ukernel((xnn_igemm_ukernel_function) xnn_f32_igemm_ukernel_1xN__wasmsimd_splat);
       xnn_params.f32.gemm.mr = 4;
-      xnn_params.f32.gemm.nr = 8;
+      xnn_params.f32.gemm.nr = 16;
 
       xnn_params.f32.gemm2.minmax.gemm = xnn_init_hmp_gemm_ukernel((xnn_gemm_ukernel_function) xnn_f32_gemm_minmax_ukernel_4x2c4__wasmsimd_x86);
       xnn_params.f32.gemm2.minmax.igemm = xnn_init_hmp_igemm_ukernel((xnn_igemm_ukernel_function) xnn_f32_igemm_minmax_ukernel_4x2c4__wasmsimd_x86);
