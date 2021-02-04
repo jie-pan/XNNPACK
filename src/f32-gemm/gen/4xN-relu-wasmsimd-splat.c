@@ -27,7 +27,7 @@ void xnn_f32_gemm_relu_ukernel_4xN__wasmsimd_splat(
     const union xnn_f32_relu_params params[restrict XNN_MIN_ELEMENTS(1)])
 {
   //TODO, get N from custom section
-  const size_t N = 16;
+  const size_t N = 8 * SIMD_SCALE;
 
   //assert(N == 8 || N == 16 || N == 32);
   assert(N == 8 || N == 16);

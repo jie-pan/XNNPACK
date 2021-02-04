@@ -29,7 +29,7 @@ void xnn_f32_igemm_relu_ukernel_1xN__wasmsimd_splat(
     const union xnn_f32_relu_params params[restrict XNN_MIN_ELEMENTS(1)])
 {
 
-    const size_t N = 16;
+    const size_t N = 8 * SIMD_SCALE;
 
     assert(N == 8 || N == 16 || N == 32); //N == 8, baseline, do nothing,
     if( N == 8) {

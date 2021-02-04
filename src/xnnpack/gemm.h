@@ -18,6 +18,7 @@
 extern "C" {
 #endif
 
+extern const size_t SIMD_SCALE;
 
 #define DECLARE_F32_GEMM_UKERNEL_FUNCTION(fn_name) \
   XNN_INTERNAL void fn_name(                       \
