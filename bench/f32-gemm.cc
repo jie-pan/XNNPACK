@@ -30,6 +30,7 @@
 #include <xnnpack/params.h>
 #include <xnnpack/ppmm.h>
 
+const size_t SIMD_SCALE = 2;
 
 static void GEMMBenchmark(benchmark::State& state,
   xnn_f32_gemm_minmax_ukernel_function gemm,
@@ -814,13 +815,12 @@ static void ruy_st(benchmark::State& state, const char* net)
   }
 
   static void f32_gemm_4xN__wasmsimd_x86_loadsplat(benchmark::State& state, const char* net) {
-    GEMMBenchmark(state, xnn_f32_gemm_minmax_ukernel_4xN__wasmsimd_x86_loadsplat_wrapper, 4, 8, 1, 1);
+    GEMMBenchmark(state, xnn_f32_gemm_minmax_ukernel_4xN__wasmsimd_x86_loadsplat_wrapper, 4, 16, 1, 1);
   }
 
   static void f32_gemm_4x16__wasmsimd_x86_loadsplat(benchmark::State& state, const char* net) {
     GEMMBenchmark(state, xnn_f32_gemm_minmax_ukernel_4x16__wasmsimd_x86_loadsplat, 4, 16, 1, 1);
   }
-
 
   static void f32_gemm_5x8__wasmsimd_x86_loadsplat(benchmark::State& state, const char* net) {
     GEMMBenchmark(state, xnn_f32_gemm_minmax_ukernel_5x8__wasmsimd_x86_loadsplat, 5, 8, 1, 1);
@@ -914,8 +914,8 @@ static void ruy_st(benchmark::State& state, const char* net)
   BENCHMARK_GEMM(f32_gemm_6x8__wasmsimd_arm_loadsplat)
   BENCHMARK_GEMM(f32_gemm_3x8__wasmsimd_x86_loadsplat)
   BENCHMARK_GEMM(f32_gemm_4x8__wasmsimd_x86_loadsplat)
-  BENCHMARK_GEMM(f32_gemm_4xN__wasmsimd_x86_loadsplat)
   BENCHMARK_GEMM(f32_gemm_4x16__wasmsimd_x86_loadsplat)
+  BENCHMARK_GEMM(f32_gemm_4xN__wasmsimd_x86_loadsplat)
   BENCHMARK_GEMM(f32_gemm_5x8__wasmsimd_x86_loadsplat)
   BENCHMARK_GEMM(f32_gemm_6x8__wasmsimd_x86_loadsplat)
   BENCHMARK_GEMM(f32_gemm_3x8__wasmsimd_arm_splat)
