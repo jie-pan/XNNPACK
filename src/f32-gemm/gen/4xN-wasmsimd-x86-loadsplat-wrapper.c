@@ -52,9 +52,22 @@ void xnn_f32_gemm_ukernel_4xN__wasmsimd_loadsplat_wrapper(
             w, c, cm_stride, cn_stride, params);
       }
       else if(N == 16){
+        xnn_f32_gemm_ukernel_4xN__wasmsimd_loadsplat(
+            //mr, nc/N * N,
+            mr, nc & ~(N-1),
+            kc, a, a_stride,
+            w, c, cm_stride, cn_stride, N, params);
+
+        size_t outer_count = nc/N;
+        size_t inner_count = kc/sizeof(float);
+        w += outer_count * (inner_count * N + N);
+        c = (float* restrict) ((uintptr_t) c + outer_count * cn_stride);
         xnn_f32_gemm_ukernel_4x16__wasmsimd_loadsplat(
-            mr, nc, kc, a, a_stride,
+            //mr, nc % N,
+            mr, nc & (N-1),
+            kc, a, a_stride,
             w, c, cm_stride, cn_stride, params);
+
       }
   } else {
         xnn_f32_gemm_ukernel_4xN__wasmsimd_loadsplat(
