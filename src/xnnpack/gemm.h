@@ -19,7 +19,7 @@ extern "C" {
 #endif
 
 extern const size_t default_vector_width;
-extern const size_t max_vector_width;
+extern volatile size_t max_vector_width;
 
 #define DECLARE_F32_GEMM_UKERNEL_FUNCTION(fn_name) \
   XNN_INTERNAL void fn_name(                       \

@@ -54,6 +54,10 @@
 #include <xnnpack/vunary.h>
 #include <xnnpack/zip.h>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 #ifndef XNN_ENABLE_ASSEMBLY
   #define XNN_ENABLE_ASSEMBLY 1
 #endif
@@ -69,7 +73,7 @@ struct xnn_parameters xnn_params = {
 };
 
 const size_t default_vector_width = 128;
-const size_t max_vector_width = 128;
+EMSCRIPTEN_KEEPALIVE volatile size_t max_vector_width = 128;
 
 static void init(void) {
 #if XNN_ARCH_WASM || XNN_ARCH_WASMSIMD
