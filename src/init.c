@@ -68,7 +68,8 @@ struct xnn_parameters xnn_params = {
   .init_flags = 0
 };
 
-const size_t SIMD_SCALE = 2;
+const size_t default_vector_width = 128;
+const size_t max_vector_width = 128;
 
 static void init(void) {
 #if XNN_ARCH_WASM || XNN_ARCH_WASMSIMD
@@ -2209,7 +2210,7 @@ static void init(void) {
       //xnn_params.f32.gemm.linear.igemm1 = xnn_init_hmp_igemm_ukernel((xnn_igemm_ukernel_function) xnn_f32_igemm_ukernel_1x8__wasmsimd_splat);
       xnn_params.f32.gemm.linear.igemm1 = xnn_init_hmp_igemm_ukernel((xnn_igemm_ukernel_function) xnn_f32_igemm_ukernel_1xN__wasmsimd_splat);
       xnn_params.f32.gemm.mr = 4;
-      xnn_params.f32.gemm.nr = 8 * SIMD_SCALE;
+      xnn_params.f32.gemm.nr = 8 * max_vector_width / default_vector_width;
 
       xnn_params.f32.gemm2.minmax.gemm = xnn_init_hmp_gemm_ukernel((xnn_gemm_ukernel_function) xnn_f32_gemm_minmax_ukernel_4x2c4__wasmsimd_x86);
       xnn_params.f32.gemm2.minmax.igemm = xnn_init_hmp_igemm_ukernel((xnn_igemm_ukernel_function) xnn_f32_igemm_minmax_ukernel_4x2c4__wasmsimd_x86);

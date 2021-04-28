@@ -30,7 +30,7 @@
 #include <xnnpack/params.h>
 #include <xnnpack/ppmm.h>
 
-const size_t SIMD_SCALE = 2;
+const size_t max_simd_width = 2;
 
 static void GEMMBenchmark(benchmark::State& state,
   xnn_f32_gemm_minmax_ukernel_function gemm,
